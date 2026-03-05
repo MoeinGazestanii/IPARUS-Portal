@@ -24,7 +24,7 @@
             line-height: 1.6;
         }
 
-        /* --- Section: Hero (Header) --- */
+        /* --- بخش هدر بالا (Hero Section) --- */
         .hero {
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             color: white;
@@ -34,61 +34,60 @@
             overflow: hidden; 
         }
         
-        /* --- کادر لوگو (بدون هیچ کادر سفید یا انحنا) --- */
+        /* --- استایل لوگو (کادر سفید یک‌چهارم دایره اصلی) --- */
         .logo-container {
             position: absolute;
             top: 0;
             left: 0;
-            width: auto; 
-            height: auto; 
-            background-color: transparent; 
-            border-bottom-right-radius: 0; 
-            box-shadow: none; 
+            width: 280px;  /* سایز کادر سفید */
+            height: 280px; 
+            background-color: white; 
+            border-bottom-right-radius: 100%; /* انحنای یک‌چهارم دایره */
+            box-shadow: 5px 5px 20px rgba(0,0,0,0.15); /* سایه نرم */
             z-index: 10;
         }
 
-        /* --- استایل لوگوی جدید: بزرگتر و شفاف --- */
+        /* --- استایل خود لوگوی جدید (مرکز کادر سفید) --- */
         .hero-logo {
             position: absolute;
-            /* مکان دقیق لوگو با فاصله لایت از گوشه‌ها */
-            top: 25px;
-            left: 25px;
-            /* سایز افزایش یافته برای دید بهتر */
-            width: 400px; 
+            top: 45%;  /* مرکز چین کردن عمودی */
+            left: 45%; /* مرکز چین کردن افقی */
+            transform: translate(-50%, -50%); 
+            width: 210px; /* سایز لوگو داخل کادر */
             height: auto;
-            /* سایه ملایم و حرفه‌ای برای ادغام با بکگراند تیره */
-            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3)); 
+            filter: drop-shadow(2px 5px 8px rgba(0,0,0,0.2)); 
             transition: transform 0.3s ease;
         }
 
         /* افکت هاور */
         .logo-container:hover .hero-logo {
-            transform: scale(1.08) rotate(3deg); 
+            transform: translate(-50%, -50%) scale(1.08) rotate(3deg); 
         }
 
-        /* تنظیمات موبایل */
+        /* تنظیمات موبایل (دایره ساده وسط) */
         @media (max-width: 768px) {
             .logo-container {
                 position: relative;
                 width: 160px;
-                height: auto;
+                height: 160px;
                 margin: 0 auto 25px auto;
+                border-radius: 50%; /* دایره کامل */
                 top: auto;
                 left: auto;
-                background-color: transparent;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                background-color: white; /* در موبایل هم سفید باشد تا لوگو دیده شود */
             }
             
             .hero-logo {
-                position: relative;
-                top: 0;
-                left: 0;
-                transform: none; /* مرکز چین کردن توسط margin هماهنگ با logo-container */
-                width: 100%;
-                filter: drop-shadow(2px 5px 5px rgba(0,0,0,0.3));
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%); /* مرکز چین کردن */
+                width: 130px;
+                filter: drop-shadow(2px 5px 5px rgba(0,0,0,0.2));
             }
 
             .logo-container:hover .hero-logo {
-                 transform: scale(1.08);
+                 transform: translate(-50%, -50%) scale(1.08);
             }
         }
 
@@ -192,7 +191,7 @@
             padding: 30px; 
             background: white; 
             border: 1px solid #e2e8f0; 
-            border-radius: 166px; 
+            border-radius: 16px; 
         }
         
         /* --- استایل تب جدید: Pipeline --- */
@@ -264,7 +263,7 @@
 
     <header class="hero">
         <div class="logo-container">
-            <img src="https://github.com/MoeinGazestanii/UPARUS-Portal/blob/main/Logo_main.png?raw=true" alt="UPARUS Logo" class="hero-logo">
+            <img src="https://github.com/MoeinGazestanii/UPARUS-Portal/blob/main/Logo-removebg-preview%20(1).png?raw=true" alt="UPARUS Logo" class="hero-logo">
         </div>
         
         <h1>IPARUS: Genomic Resources for the Parus genus</h1>
@@ -411,8 +410,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
