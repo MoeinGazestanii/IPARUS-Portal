@@ -24,7 +24,7 @@
             line-height: 1.6;
         }
 
-        /* --- Section: Hero (Header) --- */
+        /* --- بخش هدر بالا (Hero Section) --- */
         .hero {
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             color: white;
@@ -34,7 +34,7 @@
             overflow: hidden; 
         }
         
-        /* --- Simple container for positioning, removed curve and white bg --- */
+        /* --- کادر لوگو (بدون هیچ کادر سفید یا انحنا) --- */
         .logo-container {
             position: absolute;
             top: 0;
@@ -42,27 +42,31 @@
             width: auto; 
             height: auto; 
             background-color: transparent; 
+            border-bottom-right-radius: 0; 
+            box-shadow: none; 
             z-index: 10;
         }
 
-        /* --- Updated Logo styling: placed against dark bg --- */
+        /* --- استایل لوگوی جدید: واقعاً شفاف و در مرکز --- */
         .hero-logo {
             position: absolute;
-            top: 20px;  /* Margin from top */
-            left: 20px; /* Margin from left */
-            width: 200px; 
+            /* مکان دقیق لوگو با فاصله لایت از گوشه‌ها */
+            top: 25px;
+            left: 25px;
+            /* سایز اصلاح شده برای تعادل بیشتر */
+            width: 150px; 
             height: auto;
-            /* Drop shadow keeps logo legible on dark background */
-            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3)); 
+            /* سایه ملایم و حرفه‌ای برای ادغام با بکگراند تیره */
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.4)); 
             transition: transform 0.3s ease;
         }
 
-        /* Hover effect strictly over the logo image now */
-        .hero-logo:hover {
+        /* افکت هاور */
+        .logo-container:hover .hero-logo {
             transform: scale(1.08) rotate(3deg); 
         }
 
-        /* Mobile adjustments (center logo without circle) */
+        /* تنظیمات موبایل */
         @media (max-width: 768px) {
             .logo-container {
                 position: relative;
@@ -78,11 +82,12 @@
                 position: relative;
                 top: 0;
                 left: 0;
+                transform: none; /* مرکز چین کردن توسط margin هماهنگ با logo-container */
                 width: 100%;
                 filter: drop-shadow(2px 5px 5px rgba(0,0,0,0.3));
             }
 
-            .hero-logo:hover {
+            .logo-container:hover .hero-logo {
                  transform: scale(1.08);
             }
         }
@@ -104,7 +109,7 @@
             z-index: 5;
         }
 
-        /* --- Main Content Container --- */
+        /* --- محفظه اصلی سایت --- */
         .container { 
             max-width: 1300px; 
             margin: -30px auto 40px auto; 
@@ -120,7 +125,7 @@
             padding: 30px;
         }
 
-        /* --- Sticky Tabs styling --- */
+        /* --- استایل تب‌های چسبان (Sticky Tabs) --- */
         .tabs-container {
             display: flex;
             justify-content: center;
@@ -165,7 +170,7 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.05); 
         }
 
-        /* --- Tab Content display logic --- */
+        /* --- محتوای تب‌ها --- */
         .tab-content { display: none; }
         .tab-content.active { display: block; animation: fadeInUp 0.4s ease forwards; }
         @keyframes fadeInUp { 
@@ -181,7 +186,7 @@
             background: #f8fafc;
         }
 
-        /* --- Info Card layout --- */
+        /* --- استایل کارت‌های اطلاعات --- */
         .grid-layout { display: grid; gap: 20px; grid-template-columns: 1fr; }
         .info-card { 
             padding: 30px; 
@@ -190,7 +195,7 @@
             border-radius: 16px; 
         }
         
-        /* --- Pipeline Tab layout --- */
+        /* --- استایل تب جدید: Pipeline --- */
         .pipeline-layout {
             display: flex;
             gap: 40px;
@@ -224,7 +229,7 @@
         }
         .btn-download-ref {
             display: inline-block;
-            background: #3399ff; /* Light blue */
+            background: #3399ff; /* آبی روشن */
             color: white;
             text-decoration: none;
             padding: 10px 20px;
@@ -235,12 +240,12 @@
         }
         .btn-download-ref:hover { background-color: #2563eb; transform: translateY(-2px); }
 
-        /* References lists */
+        /* رفرنس‌ها */
         .ref-section { margin-top: 40px; padding-top: 20px; border-top: 1px solid #e2e8f0; }
         .ref-list { list-style: none; padding: 0; margin: 0; font-size: 0.95rem; color: var(--text-muted); }
         .ref-list li { margin-bottom: 12px; padding-left: 20px; text-indent: -20px; line-height: 1.5; }
 
-        /* Publication lists */
+        /* مقالات */
         .pub-list { list-style: none; padding: 0; margin: 0; }
         .pub-list li { margin-bottom: 25px; border-left: 4px solid var(--primary); padding-left: 20px; }
         .pub-title { font-weight: 600; color: var(--text-main); font-size: 1.1rem; margin-bottom: 5px;}
@@ -248,7 +253,7 @@
         .custom-link { color: var(--primary); text-decoration: none; font-weight: 600; font-size: 0.95rem; display: inline-flex; align-items: center; gap: 5px;}
         .custom-link:hover { text-decoration: underline; }
 
-        /* Contact details grid */
+        /* تماس با ما */
         .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 20px;}
         .contact-person, .contact-address { background: #f8fafc; padding: 25px; border-radius: 12px; }
         .contact-person h4, .contact-address h4 { margin-top: 0; color: #0f172a; font-size: 1.2rem; margin-bottom: 15px;}
@@ -259,7 +264,7 @@
 
     <header class="hero">
         <div class="logo-container">
-            <img src="https://github.com/MoeinGazestanii/UPARUS-Portal/blob/main/Logo1.png?raw=true" alt="UPARUS Logo" class="hero-logo">
+            <img src="https://i.ibb.co/3k86C6T/image-0.png" alt="UPARUS Logo" class="hero-logo">
         </div>
         
         <h1>IPARUS: Genomic Resources for the Parus genus</h1>
@@ -386,14 +391,11 @@
 
     <script>
         function openTab(tabId) {
-            // Hide all contents and deactivate all buttons
             document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
             
-            // Activate current tab and button
             document.getElementById(tabId).classList.add('active');
             
-            // Add active class to the correct button based on tabId
             if(tabId === 'mapTab') document.getElementById('btnMap').classList.add('active');
             if(tabId === 'pipelineTab') document.getElementById('btnPipeline').classList.add('active');
             if(tabId === 'tableTab') document.getElementById('btnTable').classList.add('active');
@@ -402,7 +404,6 @@
             if(tabId === 'contactTab') document.getElementById('btnContact').classList.add('active');
         }
 
-        // Global function to allow iframe map to trigger table switch
         window.switchToTable = function(urlHash) {
             document.getElementById('tableIframe').src = urlHash;
             openTab('tableTab');
