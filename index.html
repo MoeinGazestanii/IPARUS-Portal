@@ -3,114 +3,413 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UPARUS Portal - Unified Portal for Archaeogenetic Research in the South</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>IPARUS - Integrated Parus Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
-        body { background-color: #f8fafc; font-family: 'Inter', sans-serif; color: #334155; margin: 0; padding: 0; }
-        .main-container { max-width: 1400px; margin: 0 auto; padding: 20px; }
-        
-        /* --- استایل هدر جدید با لوگوی شما --- */
-        .portal-header { 
-            background-color: #ffffff; /* پس‌زمینه سفید برای لوگو */
-            padding: 15px 30px; 
-            border-radius: 12px; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
-            margin-bottom: 25px; 
-            display: flex; 
-            align-items: center; /* تراز عمودی وسط */
-        }
-        
-        /* استایل خود لوگو */
-        .header-logo {
-            height: 70px; /* ارتفاع لوگو را تنظیم کنید */
-            width: auto; /* عرض به طور خودکار تنظیم می‌شود */
-            margin-right: 25px; /* فاصله لوگو تا متن */
-        }
-        
-        .header-text-container {
-            display: flex;
-            flex-direction: column;
+        :root {
+            --primary: #2563eb;
+            --bg-body: #f8fafc;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --card-bg: #ffffff;
         }
 
-        .portal-title { 
-            color: #1e293b; /* slate-800 */
-            font-weight: 600; 
+        body { 
+            font-family: 'Inter', sans-serif; 
             margin: 0; 
-            font-size: 1.75em; 
+            padding: 0; 
+            background-color: var(--bg-body); 
+            color: var(--text-main); 
+            line-height: 1.6;
+        }
+
+        /* --- بخش هدر بالا (Hero Section) --- */
+        .hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            padding: 40px 20px 50px 20px; 
+            text-align: center;
+            position: relative; 
+            overflow: hidden; 
+        }
+        
+        /* --- استایل لوگو (کادر سفید یک‌چهارم دایره - ساده شده) --- */
+        .logo-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 280px;  /* سایز مناسب برای کادر سفید */
+            height: 280px; 
+            background-color: white; 
+            border-bottom-right-radius: 100%; /* انحنای یک‌چهارم دایره */
+            box-shadow: 5px 5px 20px rgba(0,0,0,0.15); /* سایه نرم */
+            z-index: 10;
+        }
+
+        /* --- استایل خود لوگو (داخل کادر سفید) --- */
+        .hero-logo {
+            position: absolute;
+            /* تغییر جزئی مختصات برای مرکز چین شدن لوگوی جدید داخل کادر */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); 
+            width: 200px; /* سایز لوگو */
+            height: auto;
+            /* سایه دادن به خود لوگو تا از زمینه سفید جدا شود */
+            filter: drop-shadow(5px 10px 10px rgba(0,0,0,0.3)); 
+            transition: transform 0.3s ease;
+        }
+
+        /* افکت هاور */
+        .logo-container:hover .hero-logo {
+            /* حفظ همان افکت چرخشی پرنده روی لوگو */
+            transform: translate(-50%, -50%) scale(1.08) rotate(3deg); 
+        }
+
+        /* تنظیمات موبایل (دایره ساده وسط) */
+        @media (max-width: 768px) {
+            .logo-container {
+                position: relative;
+                width: 160px;
+                height: 160px;
+                margin: 0 auto 25px auto;
+                border-radius: 50%; /* دایره کامل */
+                top: auto;
+                left: auto;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                background-color: rgba(255,255,255,0.15); /* کمی شفاف در موبایل */
+            }
+            
+            .hero-logo {
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%); /* مرکز چین کردن */
+                width: 130px;
+                filter: drop-shadow(2px 5px 5px rgba(0,0,0,0.3));
+            }
+
+            .logo-container:hover .hero-logo {
+                 transform: translate(-50%, -50%) scale(1.08);
+            }
+        }
+
+        .hero h1 { 
+            font-size: 2.2rem; 
+            font-weight: 700; 
+            margin: 0 0 15px 0; 
             letter-spacing: -0.5px;
+            position: relative;
+            z-index: 5; 
+        }
+        .hero p { 
+            max-width: 900px; 
+            margin: 0 auto 10px auto; 
+            color: #cbd5e1; 
+            font-size: 1.05rem; 
+            position: relative;
+            z-index: 5;
+        }
+
+        /* --- محفظه اصلی سایت --- */
+        .container { 
+            max-width: 1300px; 
+            margin: -30px auto 40px auto; 
+            padding: 0 20px; 
+            position: relative;
+            z-index: 20;
         }
         
-        .portal-subtitle { 
-            color: #64748b; /* slate-500 */
-            font-weight: 400; 
-            margin: 0; 
-            font-size: 1em; 
+        .dashboard-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            padding: 30px;
         }
 
-        /* --- بخش نقشه (بدون تغییر) --- */
-        .map-section { 
-            background: white; 
-            padding: 20px; 
-            border-radius: 12px; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
-            margin-bottom: 25px; 
-            height: 500px; /* ارتفاع پیش‌فرض برای نقشه */
+        /* --- استایل تب‌های چسبان (Sticky Tabs) --- */
+        .tabs-container {
             display: flex;
-            align-items: center;
             justify-content: center;
-            color: #94a3b8;
-            border: 2px dashed #e2e8f0;
+            margin-bottom: 25px;
+            position: sticky; 
+            top: 20px; 
+            z-index: 1000; 
+            background: rgba(255, 255, 255, 0.85); 
+            backdrop-filter: blur(10px); 
+            padding: 10px 20px;
+            border-radius: 50px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08); 
+            width: fit-content; 
+            margin-left: auto; 
+            margin-right: auto;
         }
 
-        /* --- بخش جدول (بدون تغییر) --- */
-        #table-container { 
-            /* این محتوا توسط اسکریپت پایتون شما پر می‌شود */
+        .tabs { 
+            display: inline-flex; 
+            background: #f1f5f9; 
+            padding: 8px; 
+            border-radius: 50px; 
+            flex-wrap: wrap;
+            gap: 5px;
         }
+        .tab-btn {
+            background: transparent; 
+            border: none; 
+            padding: 12px 24px; 
+            font-size: 1rem; 
+            cursor: pointer; 
+            color: var(--text-muted); 
+            font-weight: 600;
+            border-radius: 40px; 
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+        .tab-btn:hover { color: var(--text-main); }
+        .tab-btn.active { 
+            background: white; 
+            color: var(--primary); 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05); 
+        }
+
+        /* --- محتوای تب‌ها --- */
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: fadeInUp 0.4s ease forwards; }
+        @keyframes fadeInUp { 
+            from { opacity: 0; transform: translateY(10px); } 
+            to { opacity: 1; transform: translateY(0); } 
+        }
+
+        iframe { 
+            width: 100%; 
+            height: 750px; 
+            border: none; 
+            border-radius: 12px;
+            background: #f8fafc;
+        }
+
+        /* --- استایل کارت‌های اطلاعات --- */
+        .grid-layout { display: grid; gap: 20px; grid-template-columns: 1fr; }
+        .info-card { 
+            padding: 30px; 
+            background: white; 
+            border: 1px solid #e2e8f0; 
+            border-radius: 16px; 
+        }
+        
+        /* --- استایل تب جدید: Pipeline --- */
+        .pipeline-layout {
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+        .pipeline-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        .pipeline-image {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            justify-content: center;
+        }
+        .pipeline-image img {
+            max-width: 500px;
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        .download-box {
+            background: #f1f5f9;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 20px;
+            border-left: 5px solid var(--primary);
+        }
+        .btn-download-ref {
+            display: inline-block;
+            background: #3399ff; /* آبی روشن */
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 500;
+            margin-top: 10px;
+            transition: 0.2s;
+        }
+        .btn-download-ref:hover { background-color: #2563eb; transform: translateY(-2px); }
+
+        /* رفرنس‌ها */
+        .ref-section { margin-top: 40px; padding-top: 20px; border-top: 1px solid #e2e8f0; }
+        .ref-list { list-style: none; padding: 0; margin: 0; font-size: 0.95rem; color: var(--text-muted); }
+        .ref-list li { margin-bottom: 12px; padding-left: 20px; text-indent: -20px; line-height: 1.5; }
+
+        /* مقالات */
+        .pub-list { list-style: none; padding: 0; margin: 0; }
+        .pub-list li { margin-bottom: 25px; border-left: 4px solid var(--primary); padding-left: 20px; }
+        .pub-title { font-weight: 600; color: var(--text-main); font-size: 1.1rem; margin-bottom: 5px;}
+        .pub-authors { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 10px; }
+        .custom-link { color: var(--primary); text-decoration: none; font-weight: 600; font-size: 0.95rem; display: inline-flex; align-items: center; gap: 5px;}
+        .custom-link:hover { text-decoration: underline; }
+
+        /* تماس با ما */
+        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 20px;}
+        .contact-person, .contact-address { background: #f8fafc; padding: 25px; border-radius: 12px; }
+        .contact-person h4, .contact-address h4 { margin-top: 0; color: #0f172a; font-size: 1.2rem; margin-bottom: 15px;}
+        .contact-item { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; color: var(--text-muted); }
     </style>
 </head>
 <body>
 
-<div class="main-container">
-    <header class="portal-header">
-        <img src="https://github.com/MoeinGazestanii/UPARUS-Portal/blob/main/Logo.png?raw=true" alt="UPARUS Logo" class="header-logo">
-        
-        <div class="header-text-container">
-            <h1 class="portal-title">UPARUS Portal</h1>
-            <p class="portal-subtitle">Unified Portal for Archaeogenetic Research in the South</p>
+    <header class="hero">
+        <div class="logo-container">
+            <img src="https://github.com/MoeinGazestanii/UPARUS-Portal/blob/main/Logo.png?raw=true" alt="UPARUS Logo" class="hero-logo">
         </div>
+        
+        <h1>IPARUS: Genomic Resources for the Parus genus</h1>
+        
+        <p>This website hosts the <strong>IPARUS</strong> (<strong>I</strong>ntegrated <strong>P</strong>latform for <em>Parus</em> <strong>A</strong>lignments, <strong>R</strong>esources and <strong>U</strong>seful <strong>S</strong>equences) project and provides public access to genomic resources of birds from the <em>Parus</em> genus. <em>Parus</em> is a genus of old-world birds in the tit family. Its most known member is the great tit (<em>Parus major</em>), which is also the species represented by the most samples on this website. However, in the future datasets from other <em>Parus</em> species and their many subspecies may be added here.</p>
+        
+        <p>We provide a database of sequence data and the corresponding metadata of the samples to facilitate collaboration between researchers and provide access to this data to the public.</p>
     </header>
 
-    <section class="map-section">
-        <div>
-            <h4>🗺️ Interactive Map Container</h4>
-            <p>Your interactive map visualization will be loaded here.</p>
+    <div class="container">
+        <div class="dashboard-card">
+            
+            <div class="tabs-container">
+                <div class="tabs">
+                    <button class="tab-btn active" onclick="openTab('mapTab')" id="btnMap">🌍 Map View</button>
+                    <button class="tab-btn" onclick="openTab('tableTab')" id="btnTable">🧬 Sequence Data</button>
+                    <button class="tab-btn" onclick="openTab('infoTab')" id="btnInfo">📊 Sample Information</button>
+                    <button class="tab-btn" onclick="openTab('pipelineTab')" id="btnPipeline">💻 Pipeline & Reference</button>
+                    <button class="tab-btn" onclick="openTab('pubTab')" id="btnPub">📚 Publications</button>
+                    <button class="tab-btn" onclick="openTab('contactTab')" id="btnContact">✉️ Contact</button>
+                </div>
+            </div>
+
+            <div id="mapTab" class="tab-content active">
+                <iframe src="Final_Styled_Map.html"></iframe>
+            </div>
+
+            <div id="pipelineTab" class="tab-content">
+                <div class="info-card">
+                    <h3 style="color: var(--text-main); margin-bottom: 25px;">Bioinformatic Pipeline & Reference Genome</h3>
+                    
+                    <div class="pipeline-layout">
+                        <div class="pipeline-text">
+                            <p>The bioinformatic pipeline to map the reads to the reference was the same as described in Chen et al. (2025). Briefly, the quality of the Illumina sequencing reads was assessed using <strong>FastQC v0.12.1</strong> and trimmed using <strong>Trimmomatic v0.39</strong> (Bolger et al. 2014). Trimmed reads were then aligned to the <em>Parus major</em> reference genome (GCF_001522545.3) with the <strong>BWA-MEM2 v2.2.1</strong> algorithm (Li 2013) with default parameters. After converting SAM to BAM files and indexing with <strong>SAMtools v1.2</strong> (Li et al. 2009) duplicated reads were marked using MarkDuplicatesSpark implemented in <strong>GATK v4.5.0</strong> (Auwera and O’Connor 2020).</p>
+                            
+                            <div class="download-box">
+                                <p style="margin-top:0;"><strong>📥 Download Reference Genome</strong></p>
+                                <p style="font-size: 0.9em; color: var(--text-muted); margin-bottom: 10px;">
+                                    You can download the <i>Parus major</i> reference genome from our database here:
+                                </p>
+                                <a href="GCF_001522545.3.zip" class="btn-download-ref">⬇️ Download GCF_001522545.3</a>
+                            </div>
+                        </div>
+
+                        <div class="pipeline-image">
+                            <img src="https://github.com/MoeinGazestanii/UPARUS-Portal/blob/main/pipeline.png?raw=true" alt="Bioinformatic Pipeline Diagram">
+                        </div>
+                    </div>
+
+                    <div class="ref-section">
+                        <h4 style="margin-bottom: 15px;">📜 References</h4>
+                        <ul class="ref-list">
+                            <li>Auwera, G. A. V. der, and B. D. O’Connor. 2020. <i>Genomics in the Cloud: Using Docker, GATK, and WDL in Terra.</i> 1st ed. O’Reilly Media, Inc.</li>
+                            <li>Bolger, A. M., M. Lohse, and B. Usadel. 2014. Trimmomatic: a flexible trimmer for Illumina sequence data. <i>Bioinformatics</i> 30:2114–2120.</li>
+                            <li>Chen, Y.-C., N. Vellnow, J. J. S. Wilcox, S. Javaheri Tehrani, and T. I. Gossmann. 2025. Opinion: Why Sex-Based Genomic Differentiation Should Not Be Overlooked in Population Genetics. <i>Mol. Ecol.</i> e70061.</li>
+                            <li>Li, H. 2013. Aligning sequence reads, clone sequences and assembly contigs with BWA-MEM. <i>arXiv.</i></li>
+                            <li>Li, H., B. Handsaker, A. Wysoker, T. Fennell, J. Ruan, N. Homer, G. Marth, G. Abecasis, R. Durbin, and 1000 Genome Project Data Processing Subgroup. 2009. The Sequence Alignment/Map format and SAMtools. <i>Bioinformatics</i> 25:2078–2079.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tableTab" class="tab-content">
+                <iframe src="samples_table.html" id="tableIframe"></iframe>
+            </div>
+
+            <div id="infoTab" class="tab-content">
+                <iframe src="sample_information.html" id="infoIframe"></iframe>
+            </div>
+
+            <div id="pubTab" class="tab-content">
+                <div class="grid-layout">
+                    <div class="info-card">
+                        <ul class="pub-list">
+                            <li>
+                                <div class="pub-title">Determinants of the Efficacy of Natural Selection on Coding and Noncoding Variability in Two Passerine Species.</div>
+                                <div class="pub-authors">Corcoran, P., Gossmann, T.I., Barton, H.J., The Great Tit HapMap Consortium, Slate, J., Zeng, K. (2017) | <i>Genome Biol. Evol. 9, 2987–3007</i></div>
+                                <a href="https://doi.org/10.1093/gbe/evx213" target="_blank" class="custom-link">
+                                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/><path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/></svg>
+                                    View on Oxford Academic (DOI)
+                                </a>
+                            </li>
+                            <li>
+                                <div class="pub-title">Evolutionary signals of selection on cognition from the great tit genome and methylome.</div>
+                                <div class="pub-authors">Laine, V.N., Gossmann, T.I., Schachtschneider, K.M., et al. (2016) | <i>Nat. Commun. 7, 10474</i></div>
+                                <a href="https://doi.org/10.1038/ncomms10474" target="_blank" class="custom-link">
+                                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/><path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/></svg>
+                                    View on Nature (DOI)
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="contactTab" class="tab-content">
+                <div class="info-card">
+                    <p style="color: var(--text-main); font-size: 1.05rem; margin-bottom: 25px;">
+                        The <strong>UPARUS</strong> database and this website are maintained by the Gossmann lab at TU Dortmund University. 
+                        The contact person is Nikolas Vellnow, who maintains UPARUS with the aid of the student helper Mohammadmoein Hajihoseinigazestani (Moein Gazestani).
+                    </p>
+                    
+                    <div class="contact-grid">
+                        <div class="contact-person">
+                            <h4>👨‍🔬 Primary Contact</h4>
+                            <div class="contact-item"><strong>Dr. Nikolas Vellnow</strong></div>
+                            <div class="contact-item">✉️ <a href="mailto:nikolas.vellnow@tu-dortmund.de" class="custom-link">nikolas.vellnow@tu-dortmund.de</a></div>
+                            <div class="contact-item">📞 <a href="tel:+492317556863" class="custom-link">+49 231 755 6863</a></div>
+                        </div>
+                        
+                        <div class="contact-address">
+                            <h4>🏛️ Institution Address</h4>
+                            <div class="contact-item">Laboratory of Computational Systems Biology</div>
+                            <div class="contact-item">Faculty of Biochemical and Chemical Engineering</div>
+                            <div class="contact-item">Technical University Dortmund</div>
+                            <div class="contact-item">📍 Emil-Figge-Str. 66, 44227 Dortmund, Germany</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
-    </section>
+    </div>
 
-    <section id="table-container">
-        <div class="alert alert-info text-center">
-            ⌛ Loading samples data table...
-            <br>
-            <small>(Please ensure you have generated 'samples_table.html' using the Python script and it is accessible here.)</small>
-        </div>
-    </section>
-</div>
+    <script>
+        function openTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            
+            document.getElementById(tabId).classList.add('active');
+            
+            if(tabId === 'mapTab') document.getElementById('btnMap').classList.add('active');
+            if(tabId === 'pipelineTab') document.getElementById('btnPipeline').classList.add('active');
+            if(tabId === 'tableTab') document.getElementById('btnTable').classList.add('active');
+            if(tabId === 'infoTab') document.getElementById('btnInfo').classList.add('active');
+            if(tabId === 'pubTab') document.getElementById('btnPub').classList.add('active');
+            if(tabId === 'contactTab') document.getElementById('btnContact').classList.add('active');
+        }
 
-<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-
-<script>
-    // اسکریپت برای بارگذاری فایل جدول (samples_table.html) داخل این صفحه
-    $(document).ready(function() {
-        // فرض بر این است که فایل ساخته شده توسط پایتون در همان پوشه قرار دارد
-        $("#table-container").load("samples_table.html", function(response, status, xhr) {
-            if (status == "error") {
-                $(this).html('<div class="alert alert-danger text-center">❌ Error loading samples table.<br>Make sure "samples_table.html" exists in the same directory.</div>');
-            }
-        });
-    });
-</script>
-
+        window.switchToTable = function(urlHash) {
+            document.getElementById('tableIframe').src = urlHash;
+            openTab('tableTab');
+        };
+    </script>
 </body>
 </html>
