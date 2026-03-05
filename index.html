@@ -19,82 +19,79 @@
             font-family: 'Inter', sans-serif; 
             margin: 0; 
             padding: 0; 
-            /* پس‌زمینه سایت به رنگ آبی تیره تغییر کرد */
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); 
-            background-attachment: fixed; /* برای ثابت ماندن گرادیانت هنگام اسکرول */
+            background-color: var(--bg-body); 
             color: var(--text-main); 
             line-height: 1.6;
         }
 
         /* --- بخش هدر بالا (Hero Section) --- */
         .hero {
-            /* پس‌زمینه هدر سفید شد */
-            background: #ffffff;
-            /* رنگ متن هدر به آبی تیره (همرنگ پس‌زمینه پایین) تغییر کرد */
-            color: #0f172a;
-            padding: 40px 20px 50px 20px; 
+            /* رنگ آبی تیره برگشت */
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            /* پدینگ چپ و راست زیاد شد تا متن‌ها زیر کادرهای سفید نروند */
+            padding: 40px 320px 50px 320px; 
             text-align: center;
             position: relative; 
             overflow: hidden; 
         }
         
-        /* --- استایل لوگو (کادر یک‌چهارم دایره حذف شد) --- */
+        /* --- کادر سفید سمت چپ (حاوی لوگو) --- */
         .logo-container {
             position: absolute;
             top: 0;
             left: 0;
-            width: auto; 
-            height: auto; 
-            background-color: transparent; 
-            border-radius: 0; 
-            box-shadow: none; 
+            width: 300px;  /* عرض کادر سفید */
+            height: 100%;  /* تمام ارتفاع کناره را می‌پوشاند */
+            background-color: white; 
+            box-shadow: 5px 0 25px rgba(0,0,0,0.3); /* سایه به سمت داخل */
+            z-index: 10;
+            /* برای مرکز چین کردن دقیق لوگو در کادر */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* --- کادر سفید سمت راست (برای تقارن) --- */
+        .right-panel {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 300px;  /* عرض کادر سفید */
+            height: 100%;  /* تمام ارتفاع کناره را می‌پوشاند */
+            background-color: white; 
+            box-shadow: -5px 0 25px rgba(0,0,0,0.3); /* سایه به سمت داخل */
             z-index: 10;
         }
 
-        /* --- استایل خود لوگو (جایگذاری مستقیم در گوشه بالا) --- */
+        /* --- استایل خود لوگو (در مرکز کادر سفید سمت چپ) --- */
         .hero-logo {
-            position: absolute;
-            top: 25px; 
-            left: 25px; 
-            transform: none; 
-            width: 210px; 
+            width: 220px; /* سایز متناسب با عرض کادر */
             height: auto;
-            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1)); 
+            filter: drop-shadow(0 5px 10px rgba(0,0,0,0.15)); 
             transition: transform 0.3s ease;
         }
 
         /* افکت هاور */
         .logo-container:hover .hero-logo {
-            transform: scale(1.05); 
+            transform: scale(1.08) rotate(3deg); 
         }
 
-        /* تنظیمات موبایل */
-        @media (max-width: 768px) {
+        /* تنظیمات موبایل (برای اینکه در صفحه‌های کوچک خراب نشود) */
+        @media (max-width: 1024px) {
+            .hero { padding: 40px 20px 50px 20px; }
             .logo-container {
                 position: relative;
                 width: 100%;
                 height: auto;
-                margin: 0 auto 20px auto;
-                border-radius: 0; 
-                top: auto;
-                left: auto;
-                box-shadow: none;
-                background-color: transparent; 
-                text-align: center;
+                padding: 20px 0;
+                margin-bottom: 25px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                border-radius: 16px;
+                background-color: white; 
             }
-            
-            .hero-logo {
-                position: relative;
-                top: auto;
-                left: auto;
-                transform: none; 
-                width: 160px;
-                filter: drop-shadow(2px 5px 5px rgba(0,0,0,0.1));
-            }
-
-            .logo-container:hover .hero-logo {
-                 transform: scale(1.05);
-            }
+            .right-panel { display: none; } /* کادر راست در موبایل مخفی می‌شود */
+            .hero-logo { width: 180px; }
         }
 
         .hero h1 { 
@@ -103,13 +100,12 @@
             margin: 0 0 15px 0; 
             letter-spacing: -0.5px;
             position: relative;
-            z-index: 5;
-            color: #0f172a; /* رنگ تیتر به آبی تیره تغییر کرد */
+            z-index: 5; 
         }
         .hero p { 
             max-width: 900px; 
             margin: 0 auto 10px auto; 
-            color: #1e293b; /* رنگ توضیحات به آبی/خاکستری تیره تغییر کرد تا روی سفید خوانا باشد */
+            color: #cbd5e1; 
             font-size: 1.05rem; 
             position: relative;
             z-index: 5;
@@ -235,7 +231,7 @@
         }
         .btn-download-ref {
             display: inline-block;
-            background: #3399ff; 
+            background: #3399ff; /* آبی روشن */
             color: white;
             text-decoration: none;
             padding: 10px 20px;
@@ -270,8 +266,10 @@
 
     <header class="hero">
         <div class="logo-container">
-            <img src="https://github.com/MoeinGazestanii/UPARUS-Portal/blob/main/Logo_B.png?raw=true" alt="UPARUS Logo" class="hero-logo">
+            <img src="https://github.com/MoeinGazestanii/UPARUS-Portal/blob/main/Logo-removebg-preview%20(1).png?raw=true" alt="UPARUS Logo" class="hero-logo">
         </div>
+        
+        <div class="right-panel"></div>
         
         <h1>IPARUS: Genomic Resources for the Parus genus</h1>
         
