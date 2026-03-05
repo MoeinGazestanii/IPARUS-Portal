@@ -24,7 +24,7 @@
             line-height: 1.6;
         }
 
-        /* --- بخش هدر بالا (Hero Section) --- */
+        /* --- Section: Hero (Header) --- */
         .hero {
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             color: white;
@@ -34,63 +34,56 @@
             overflow: hidden; 
         }
         
-        /* --- استایل لوگو (کادر سفید یک‌چهارم دایره - ساده شده) --- */
+        /* --- Simple container for positioning, removed curve and white bg --- */
         .logo-container {
             position: absolute;
             top: 0;
             left: 0;
-            width: 280px;  /* سایز مناسب برای کادر سفید */
-            height: 280px; 
-            background-color: white; 
-            border-bottom-right-radius: 100%; /* انحنای یک‌چهارم دایره */
-            box-shadow: 5px 5px 20px rgba(0,0,0,0.15); /* سایه نرم */
+            width: auto; 
+            height: auto; 
+            background-color: transparent; 
             z-index: 10;
         }
 
-        /* --- استایل خود لوگو (داخل کادر سفید) --- */
+        /* --- Updated Logo styling: placed against dark bg --- */
         .hero-logo {
             position: absolute;
-            /* تغییر جزئی مختصات برای مرکز چین شدن لوگوی جدید داخل کادر */
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%); 
-            width: 200px; /* سایز لوگو */
+            top: 20px;  /* Margin from top */
+            left: 20px; /* Margin from left */
+            width: 200px; 
             height: auto;
-            /* سایه دادن به خود لوگو تا از زمینه سفید جدا شود */
-            filter: drop-shadow(5px 10px 10px rgba(0,0,0,0.3)); 
+            /* Drop shadow keeps logo legible on dark background */
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3)); 
             transition: transform 0.3s ease;
         }
 
-        /* افکت هاور */
-        .logo-container:hover .hero-logo {
-            /* حفظ همان افکت چرخشی پرنده روی لوگو */
-            transform: translate(-50%, -50%) scale(1.08) rotate(3deg); 
+        /* Hover effect strictly over the logo image now */
+        .hero-logo:hover {
+            transform: scale(1.08) rotate(3deg); 
         }
 
-        /* تنظیمات موبایل (دایره ساده وسط) */
+        /* Mobile adjustments (center logo without circle) */
         @media (max-width: 768px) {
             .logo-container {
                 position: relative;
                 width: 160px;
-                height: 160px;
+                height: auto;
                 margin: 0 auto 25px auto;
-                border-radius: 50%; /* دایره کامل */
                 top: auto;
                 left: auto;
-                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-                background-color: rgba(255,255,255,0.15); /* کمی شفاف در موبایل */
+                background-color: transparent;
             }
             
             .hero-logo {
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%); /* مرکز چین کردن */
-                width: 130px;
+                position: relative;
+                top: 0;
+                left: 0;
+                width: 100%;
                 filter: drop-shadow(2px 5px 5px rgba(0,0,0,0.3));
             }
 
-            .logo-container:hover .hero-logo {
-                 transform: translate(-50%, -50%) scale(1.08);
+            .hero-logo:hover {
+                 transform: scale(1.08);
             }
         }
 
@@ -111,7 +104,7 @@
             z-index: 5;
         }
 
-        /* --- محفظه اصلی سایت --- */
+        /* --- Main Content Container --- */
         .container { 
             max-width: 1300px; 
             margin: -30px auto 40px auto; 
@@ -127,7 +120,7 @@
             padding: 30px;
         }
 
-        /* --- استایل تب‌های چسبان (Sticky Tabs) --- */
+        /* --- Sticky Tabs styling --- */
         .tabs-container {
             display: flex;
             justify-content: center;
@@ -172,7 +165,7 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.05); 
         }
 
-        /* --- محتوای تب‌ها --- */
+        /* --- Tab Content display logic --- */
         .tab-content { display: none; }
         .tab-content.active { display: block; animation: fadeInUp 0.4s ease forwards; }
         @keyframes fadeInUp { 
@@ -188,7 +181,7 @@
             background: #f8fafc;
         }
 
-        /* --- استایل کارت‌های اطلاعات --- */
+        /* --- Info Card layout --- */
         .grid-layout { display: grid; gap: 20px; grid-template-columns: 1fr; }
         .info-card { 
             padding: 30px; 
@@ -197,7 +190,7 @@
             border-radius: 16px; 
         }
         
-        /* --- استایل تب جدید: Pipeline --- */
+        /* --- Pipeline Tab layout --- */
         .pipeline-layout {
             display: flex;
             gap: 40px;
@@ -231,7 +224,7 @@
         }
         .btn-download-ref {
             display: inline-block;
-            background: #3399ff; /* آبی روشن */
+            background: #3399ff; /* Light blue */
             color: white;
             text-decoration: none;
             padding: 10px 20px;
@@ -242,12 +235,12 @@
         }
         .btn-download-ref:hover { background-color: #2563eb; transform: translateY(-2px); }
 
-        /* رفرنس‌ها */
+        /* References lists */
         .ref-section { margin-top: 40px; padding-top: 20px; border-top: 1px solid #e2e8f0; }
         .ref-list { list-style: none; padding: 0; margin: 0; font-size: 0.95rem; color: var(--text-muted); }
         .ref-list li { margin-bottom: 12px; padding-left: 20px; text-indent: -20px; line-height: 1.5; }
 
-        /* مقالات */
+        /* Publication lists */
         .pub-list { list-style: none; padding: 0; margin: 0; }
         .pub-list li { margin-bottom: 25px; border-left: 4px solid var(--primary); padding-left: 20px; }
         .pub-title { font-weight: 600; color: var(--text-main); font-size: 1.1rem; margin-bottom: 5px;}
@@ -255,7 +248,7 @@
         .custom-link { color: var(--primary); text-decoration: none; font-weight: 600; font-size: 0.95rem; display: inline-flex; align-items: center; gap: 5px;}
         .custom-link:hover { text-decoration: underline; }
 
-        /* تماس با ما */
+        /* Contact details grid */
         .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 20px;}
         .contact-person, .contact-address { background: #f8fafc; padding: 25px; border-radius: 12px; }
         .contact-person h4, .contact-address h4 { margin-top: 0; color: #0f172a; font-size: 1.2rem; margin-bottom: 15px;}
@@ -266,7 +259,7 @@
 
     <header class="hero">
         <div class="logo-container">
-            <img src="https://github.com/MoeinGazestanii/UPARUS-Portal/blob/main/Logo.png?raw=true" alt="UPARUS Logo" class="hero-logo">
+            <img src="https://github.com/MoeinGazestanii/UPARUS-Portal/blob/main/Logo1.png?raw=true" alt="UPARUS Logo" class="hero-logo">
         </div>
         
         <h1>IPARUS: Genomic Resources for the Parus genus</h1>
@@ -393,11 +386,14 @@
 
     <script>
         function openTab(tabId) {
+            // Hide all contents and deactivate all buttons
             document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
             
+            // Activate current tab and button
             document.getElementById(tabId).classList.add('active');
             
+            // Add active class to the correct button based on tabId
             if(tabId === 'mapTab') document.getElementById('btnMap').classList.add('active');
             if(tabId === 'pipelineTab') document.getElementById('btnPipeline').classList.add('active');
             if(tabId === 'tableTab') document.getElementById('btnTable').classList.add('active');
@@ -406,6 +402,7 @@
             if(tabId === 'contactTab') document.getElementById('btnContact').classList.add('active');
         }
 
+        // Global function to allow iframe map to trigger table switch
         window.switchToTable = function(urlHash) {
             document.getElementById('tableIframe').src = urlHash;
             openTab('tableTab');
