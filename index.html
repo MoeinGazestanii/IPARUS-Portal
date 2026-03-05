@@ -19,75 +19,81 @@
             font-family: 'Inter', sans-serif; 
             margin: 0; 
             padding: 0; 
-            background-color: var(--bg-body); 
+            /* پس‌زمینه سایت به رنگ آبی تیره تغییر کرد */
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); 
+            background-attachment: fixed; /* برای ثابت ماندن گرادیانت هنگام اسکرول */
             color: var(--text-main); 
             line-height: 1.6;
         }
 
         /* --- بخش هدر بالا (Hero Section) --- */
         .hero {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            color: white;
+            /* پس‌زمینه هدر سفید شد */
+            background: #ffffff;
+            /* رنگ متن هدر به آبی تیره (همرنگ پس‌زمینه پایین) تغییر کرد */
+            color: #0f172a;
             padding: 40px 20px 50px 20px; 
             text-align: center;
             position: relative; 
             overflow: hidden; 
         }
         
-        /* --- استایل لوگو (کادر سفید یک‌چهارم دایره اصلی) --- */
+        /* --- استایل لوگو (کادر یک‌چهارم دایره حذف شد) --- */
         .logo-container {
             position: absolute;
             top: 0;
             left: 0;
-            width: 310px;  /* سایز کادر سفید */
-            height: 310px; 
-            background-color: white; 
-            border-bottom-right-radius: 100%; /* انحنای یک‌چهارم دایره */
-            box-shadow: 5px 5px 20px rgba(0,0,0,0.15); /* سایه نرم */
+            width: auto; 
+            height: auto; 
+            background-color: transparent; 
+            border-radius: 0; 
+            box-shadow: none; 
             z-index: 10;
         }
 
-        /* --- استایل خود لوگوی جدید (مرکز کادر سفید) --- */
+        /* --- استایل خود لوگو (جایگذاری مستقیم در گوشه بالا) --- */
         .hero-logo {
             position: absolute;
-            top: 45%;  /* مرکز چین کردن عمودی */
-            left: 35%; /* مرکز چین کردن افقی */
-            transform: translate(-50%, -50%); 
-            width: 210px; /* سایز لوگو داخل کادر */
+            top: 25px; 
+            left: 25px; 
+            transform: none; 
+            width: 210px; 
             height: auto;
-            filter: drop-shadow(2px 5px 8px rgba(0,0,0,0.2)); 
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1)); 
             transition: transform 0.3s ease;
         }
 
         /* افکت هاور */
         .logo-container:hover .hero-logo {
-            transform: translate(-50%, -50%) scale(1.08) rotate(3deg); 
+            transform: scale(1.05); 
         }
 
-        /* تنظیمات موبایل (دایره ساده وسط) */
+        /* تنظیمات موبایل */
         @media (max-width: 768px) {
             .logo-container {
                 position: relative;
-                width: 160px;
-                height: 160px;
-                margin: 0 auto 25px auto;
-                border-radius: 50%; /* دایره کامل */
+                width: 100%;
+                height: auto;
+                margin: 0 auto 20px auto;
+                border-radius: 0; 
                 top: auto;
                 left: auto;
-                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-                background-color: white; /* در موبایل هم سفید باشد تا لوگو دیده شود */
+                box-shadow: none;
+                background-color: transparent; 
+                text-align: center;
             }
             
             .hero-logo {
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%); /* مرکز چین کردن */
-                width: 130px;
-                filter: drop-shadow(2px 5px 5px rgba(0,0,0,0.2));
+                position: relative;
+                top: auto;
+                left: auto;
+                transform: none; 
+                width: 160px;
+                filter: drop-shadow(2px 5px 5px rgba(0,0,0,0.1));
             }
 
             .logo-container:hover .hero-logo {
-                 transform: translate(-50%, -50%) scale(1.08);
+                 transform: scale(1.05);
             }
         }
 
@@ -97,12 +103,13 @@
             margin: 0 0 15px 0; 
             letter-spacing: -0.5px;
             position: relative;
-            z-index: 5; 
+            z-index: 5;
+            color: #0f172a; /* رنگ تیتر به آبی تیره تغییر کرد */
         }
         .hero p { 
             max-width: 900px; 
             margin: 0 auto 10px auto; 
-            color: #cbd5e1; 
+            color: #1e293b; /* رنگ توضیحات به آبی/خاکستری تیره تغییر کرد تا روی سفید خوانا باشد */
             font-size: 1.05rem; 
             position: relative;
             z-index: 5;
@@ -228,7 +235,7 @@
         }
         .btn-download-ref {
             display: inline-block;
-            background: #3399ff; /* آبی روشن */
+            background: #3399ff; 
             color: white;
             text-decoration: none;
             padding: 10px 20px;
@@ -410,7 +417,3 @@
     </script>
 </body>
 </html>
-
-
-
-
