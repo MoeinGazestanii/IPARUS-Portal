@@ -28,66 +28,69 @@
         .hero {
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             color: white;
-            padding: 40px 20px 50px 20px; 
+            /* پدینگ بالا را برای ایجاد فضا برای دایره افزایش دادم */
+            padding: 60px 20px 50px 20px; 
             text-align: center;
             position: relative; 
             overflow: hidden; 
         }
         
-        /* --- استایل لوگو (کادر سفید یک‌چهارم دایره اصلی) --- */
+        /* --- استایل جدید محفظه لوگو (دایره کامل با پس‌زمینه سفید) --- */
         .logo-container {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 310px;  /* سایز کادر سفید */
-            height: 310px; 
+            /* مکان دایره را کمی از لبه‌ها فاصله دادم */
+            top: 20px; 
+            left: 20px;
+            /* اندازه دایره (طول و عرض باید مساوی باشند) */
+            width: 150px; 
+            height: 150px; 
             background-color: white; 
-            border-bottom-right-radius: 100%; /* انحنای یک‌چهارم دایره */
-            box-shadow: 5px 5px 20px rgba(0,0,0,0.15); /* سایه نرم */
+            /* تبدیل به دایره کامل */
+            border-radius: 50%; 
+            /* سایه دادن برای عمق بیشتر */
+            box-shadow: 0 5px 20px rgba(0,0,0,0.25); 
             z-index: 10;
+            /* مرکز چین کردن لوگو درون دایره */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden; /* جلوگیری از بیرون زدن لوگو */
         }
 
-        /* --- استایل خود لوگوی جدید (مرکز کادر سفید) --- */
+        /* --- استایل خود لوگو (درون دایره) --- */
         .hero-logo {
-            position: absolute;
-            top: 45%;  /* مرکز چین کردن عمودی */
-            left: 35%; /* مرکز چین کردن افقی */
-            transform: translate(-50%, -50%); 
-            width: 210px; /* سایز لوگو داخل کادر */
+            /* سایز لوگو متناسب با اندازه دایره */
+            max-width: 80%; 
+            max-height: 80%; 
             height: auto;
-            filter: drop-shadow(2px 5px 8px rgba(0,0,0,0.2)); 
+            width: auto;
             transition: transform 0.3s ease;
         }
 
-        /* افکت هاور */
+        /* افکت هاور روی کل دایره */
         .logo-container:hover .hero-logo {
-            transform: translate(-50%, -50%) scale(1.08) rotate(3deg); 
+            transform: scale(1.1) rotate(5deg); 
         }
 
-        /* تنظیمات موبایل (دایره ساده وسط) */
+        /* تنظیمات موبایل */
         @media (max-width: 768px) {
             .logo-container {
                 position: relative;
-                width: 160px;
-                height: 160px;
+                width: 120px;
+                height: 120px;
                 margin: 0 auto 25px auto;
-                border-radius: 50%; /* دایره کامل */
                 top: auto;
                 left: auto;
                 box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-                background-color: white; /* در موبایل هم سفید باشد تا لوگو دیده شود */
             }
             
             .hero-logo {
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%); /* مرکز چین کردن */
-                width: 130px;
-                filter: drop-shadow(2px 5px 5px rgba(0,0,0,0.2));
+                max-width: 80%;
+                max-height: 80%;
             }
 
             .logo-container:hover .hero-logo {
-                 transform: translate(-50%, -50%) scale(1.08);
+                 transform: scale(1.1);
             }
         }
 
@@ -263,7 +266,7 @@
 
     <header class="hero">
         <div class="logo-container">
-            <img src="https://github.com/MoeinGazestanii/UPARUS-Portal/blob/main/Logo_B.png?raw=true" alt="UPARUS Logo" class="hero-logo">
+            <img src="https://github.com/MoeinGazestanii/UPARUS-Portal/blob/main/major.png?raw=true" alt="Parus Major" class="hero-logo">
         </div>
         
         <h1>IPARUS: Genomic Resources for the Parus genus</h1>
@@ -363,7 +366,7 @@
                 <div class="info-card">
                     <p style="color: var(--text-main); font-size: 1.05rem; margin-bottom: 25px;">
                         The <strong>UPARUS</strong> database and this website are maintained by the Gossmann lab at TU Dortmund University. 
-                        The contact person is Nikolas Vellnow, who maintains UPARUS with the aid of the student helper Mohammadmoein Hajihoseinigazestani (Moein Gazestani).
+                        The contact person is Nikolas Vellnow, who maintains UPARUS with the aid of the student helper Mohammadmoein Hajihoseinigazestانی (Moein Gazestani).
                     </p>
                     
                     <div class="contact-grid">
