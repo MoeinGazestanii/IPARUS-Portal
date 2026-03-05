@@ -26,72 +26,69 @@
 
         /* --- بخش هدر بالا (Hero Section) --- */
         .hero {
-            /* رنگ آبی تیره برگشت */
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             color: white;
-            /* پدینگ چپ و راست زیاد شد تا متن‌ها زیر کادرهای سفید نروند */
-            padding: 40px 320px 50px 320px; 
+            padding: 40px 20px 50px 20px; 
             text-align: center;
             position: relative; 
             overflow: hidden; 
         }
         
-        /* --- کادر سفید سمت چپ (حاوی لوگو) --- */
+        /* --- استایل لوگو (کادر سفید یک‌چهارم دایره اصلی) --- */
         .logo-container {
             position: absolute;
             top: 0;
             left: 0;
-            width: 300px;  /* عرض کادر سفید */
-            height: 100%;  /* تمام ارتفاع کناره را می‌پوشاند */
+            width: 310px;  /* سایز کادر سفید */
+            height: 310px; 
             background-color: white; 
-            box-shadow: 5px 0 25px rgba(0,0,0,0.3); /* سایه به سمت داخل */
-            z-index: 10;
-            /* برای مرکز چین کردن دقیق لوگو در کادر */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* --- کادر سفید سمت راست (برای تقارن) --- */
-        .right-panel {
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 300px;  /* عرض کادر سفید */
-            height: 100%;  /* تمام ارتفاع کناره را می‌پوشاند */
-            background-color: white; 
-            box-shadow: -5px 0 25px rgba(0,0,0,0.3); /* سایه به سمت داخل */
+            border-bottom-right-radius: 100%; /* انحنای یک‌چهارم دایره */
+            box-shadow: 5px 5px 20px rgba(0,0,0,0.15); /* سایه نرم */
             z-index: 10;
         }
 
-        /* --- استایل خود لوگو (در مرکز کادر سفید سمت چپ) --- */
+        /* --- استایل خود لوگوی جدید (مرکز کادر سفید) --- */
         .hero-logo {
-            width: 220px; /* سایز متناسب با عرض کادر */
+            position: absolute;
+            top: 45%;  /* مرکز چین کردن عمودی */
+            left: 35%; /* مرکز چین کردن افقی */
+            transform: translate(-50%, -50%); 
+            width: 210px; /* سایز لوگو داخل کادر */
             height: auto;
-            filter: drop-shadow(0 5px 10px rgba(0,0,0,0.15)); 
+            filter: drop-shadow(2px 5px 8px rgba(0,0,0,0.2)); 
             transition: transform 0.3s ease;
         }
 
         /* افکت هاور */
         .logo-container:hover .hero-logo {
-            transform: scale(1.08) rotate(3deg); 
+            transform: translate(-50%, -50%) scale(1.08) rotate(3deg); 
         }
 
-        /* تنظیمات موبایل (برای اینکه در صفحه‌های کوچک خراب نشود) */
-        @media (max-width: 1024px) {
-            .hero { padding: 40px 20px 50px 20px; }
+        /* تنظیمات موبایل (دایره ساده وسط) */
+        @media (max-width: 768px) {
             .logo-container {
                 position: relative;
-                width: 100%;
-                height: auto;
-                padding: 20px 0;
-                margin-bottom: 25px;
-                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-                border-radius: 16px;
-                background-color: white; 
+                width: 160px;
+                height: 160px;
+                margin: 0 auto 25px auto;
+                border-radius: 50%; /* دایره کامل */
+                top: auto;
+                left: auto;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                background-color: white; /* در موبایل هم سفید باشد تا لوگو دیده شود */
             }
-            .right-panel { display: none; } /* کادر راست در موبایل مخفی می‌شود */
-            .hero-logo { width: 180px; }
+            
+            .hero-logo {
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%); /* مرکز چین کردن */
+                width: 130px;
+                filter: drop-shadow(2px 5px 5px rgba(0,0,0,0.2));
+            }
+
+            .logo-container:hover .hero-logo {
+                 transform: translate(-50%, -50%) scale(1.08);
+            }
         }
 
         .hero h1 { 
@@ -269,8 +266,6 @@
             <img src="https://github.com/MoeinGazestanii/UPARUS-Portal/blob/main/Logo_B.png?raw=true" alt="UPARUS Logo" class="hero-logo">
         </div>
         
-        <div class="right-panel"></div>
-        
         <h1>IPARUS: Genomic Resources for the Parus genus</h1>
         
         <p>This website hosts the <strong>IPARUS</strong> (<strong>I</strong>ntegrated <strong>P</strong>latform for <em>Parus</em> <strong>A</strong>lignments, <strong>R</strong>esources and <strong>U</strong>seful <strong>S</strong>equences) project and provides public access to genomic resources of birds from the <em>Parus</em> genus. <em>Parus</em> is a genus of old-world birds in the tit family. Its most known member is the great tit (<em>Parus major</em>), which is also the species represented by the most samples on this website. However, in the future datasets from other <em>Parus</em> species and their many subspecies may be added here.</p>
@@ -415,4 +410,3 @@
     </script>
 </body>
 </html>
-
