@@ -3,11 +3,11 @@
 [![Website Status](https://img.shields.io/badge/Website-Live-brightgreen.svg)](https://moeingazestanii.github.io/IPARUS-Portal/) [![Maintained by](https://img.shields.io/badge/Maintained%20by-Gossmann%20Lab-blue.svg)](https://csb.bci.tu-dortmund.de/)
 
 ## 📌 Overview
-This repository hosts the source code and static web pages for the **UPARUS (Useful Parus Sequences)** project. The platform provides public access to genomic resources and metadata of birds from the *Parus* genus (most notably the great tit, *Parus major*). 
+This repository hosts the source code and static web pages for the **IPARUS (Integrated Platform for Parus Alignments, Resources and Useful Sequences)** project. The platform provides public access to genomic resources and metadata of birds from the *Parus* genus (most notably the great tit, *Parus major*). 
 
 The goal of this project is to provide a database of sequence data and corresponding metadata to facilitate collaboration between researchers and provide public access to these datasets.
 
-🌐 **Live Website:** [Click here to visit the UPARUS Portal](https://moeingazestanii.github.io/IPARUS-Portal/)
+🌐 **Live Website:** [Click here to visit the IPARUS Portal](https://moeingazestanii.github.io/IPARUS-Portal/)
 
 ---
 
@@ -29,9 +29,9 @@ The portal is purely static and hosted on **GitHub Pages**, ensuring fast loadin
 ---
 
 ## 👨‍🔬 Team & Contact Information
-The UPARUS database and this website are maintained by the **Gossmann lab** at **TU Dortmund University**.
+The IPARUS database and this website are maintained by the **Gossmann lab** at **TU Dortmund University**.
 
-- **Primary Contact:** Dr. Nikolas Vellnow (nikolas.vellnow@tu-dortmund.de)
+- **Primary Contact:** Dr. Nikolas Vellnow 
 - **Database & Web Development:** Mohammadmoein Hajihoseinigazestani (Moein Gazestani) 
 
 **Institution:**
