@@ -9,11 +9,21 @@
     <style>
         :root {
             --primary: #2563eb;
+            --primary-hover: #1d4ed8;
             --bg-body: #f8fafc;
-            --text-main: #1e293b;
+            --text-main: #0f172a;
             --text-muted: #64748b;
             --card-bg: #ffffff;
+            --border-light: #e2e8f0;
         }
+
+        /* --- Custom Scrollbar --- */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+        html { scroll-behavior: smooth; }
 
         body { 
             font-family: 'Inter', sans-serif; 
@@ -21,17 +31,20 @@
             padding: 0; 
             background-color: var(--bg-body); 
             color: var(--text-main); 
-            line-height: 1.6;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased; /* شارپ شدن متن‌ها */
+            -moz-osx-font-smoothing: grayscale;
         }
 
+        /* --- Hero Section --- */
         .hero {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            background: radial-gradient(circle at 50% 0%, #1e293b 0%, #0f172a 100%);
             color: white;
-            padding: 40px 20px 50px 20px; 
+            padding: 50px 20px 60px 20px; 
             text-align: center;
             position: relative; 
             overflow: hidden;
-            border-bottom: 5px solid #e74c3c;
+            border-bottom: 4px solid #e74c3c;
         }
         
         .logo-container {
@@ -50,42 +63,40 @@
             transform: translate(-50%, -50%); 
             width: 380px; 
             height: auto;
-            filter: drop-shadow(2px 5px 8px rgba(0,0,0,0.2)); 
-            transition: transform 0.3s ease;
+            filter: drop-shadow(2px 8px 12px rgba(0,0,0,0.3)); 
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         .logo-container:hover .hero-logo {
-            transform: translate(-50%, -50%) scale(1.08) rotate(3deg); 
+            transform: translate(-50%, -50%) scale(1.05) rotate(2deg); 
         }
 
         @media (max-width: 768px) {
             .logo-container {
                 position: relative;
-                width: 160px;
-                height: 160px;
-                margin: 0 auto 25px auto;
-                border-radius: 50%; /* دایره کامل */
+                width: 140px;
+                height: 140px;
+                margin: 0 auto 30px auto;
+                border-radius: 50%; 
                 top: auto;
                 left: auto;
-                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                box-shadow: 0 8px 25px rgba(0,0,0,0.25);
                 background-color: white; 
             }
-            
             .hero-logo {
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%, -50%); 
-                width: 130px;
-                filter: drop-shadow(2px 5px 5px rgba(0,0,0,0.2));
+                width: 110px;
+                filter: none;
             }
-
             .logo-container:hover .hero-logo {
                  transform: translate(-50%, -50%) scale(1.08);
             }
         }
 
         .hero h1 { 
-            font-size: 2.2rem; 
+            font-size: 2.4rem; 
             font-weight: 700; 
             margin: 0 0 15px 0; 
             letter-spacing: -0.5px;
@@ -93,17 +104,19 @@
             z-index: 5; 
         }
         .hero p { 
-            max-width: 900px; 
+            max-width: 850px; 
             margin: 0 auto 10px auto; 
-            color: #cbd5e1; 
-            font-size: 1.05rem; 
+            color: #94a3b8; 
+            font-size: 1.1rem; 
             position: relative;
             z-index: 5;
         }
+        .hero p strong { color: #f8fafc; }
 
+        /* --- Main Layout --- */
         .container { 
             max-width: 1300px; 
-            margin: -30px auto 40px auto; 
+            margin: -40px auto 50px auto; 
             padding: 0 20px; 
             position: relative;
             z-index: 20;
@@ -111,144 +124,179 @@
         
         .dashboard-card {
             background: var(--card-bg);
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
-            padding: 30px;
+            border-radius: 24px;
+            box-shadow: 0 12px 40px rgba(15, 23, 42, 0.06); /* سایه نرم و مدرن */
+            border: 1px solid #f1f5f9;
+            padding: 35px;
         }
 
+        /* --- Tabs --- */
         .tabs-container {
             display: flex;
             justify-content: center;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
             position: sticky; 
             top: 20px; 
             z-index: 1000; 
-            background: rgba(255, 255, 255, 0.85); 
-            backdrop-filter: blur(10px); 
-            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.9); 
+            backdrop-filter: blur(12px); 
+            padding: 10px 15px;
             border-radius: 50px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08); 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04); 
             width: fit-content; 
             margin-left: auto; 
             margin-right: auto;
+            border: 1px solid var(--border-light);
         }
 
         .tabs { 
             display: inline-flex; 
             background: #f1f5f9; 
-            padding: 8px; 
+            padding: 6px; 
             border-radius: 50px; 
             flex-wrap: wrap;
-            gap: 5px;
+            gap: 4px;
         }
         .tab-btn {
             background: transparent; 
             border: none; 
-            padding: 12px 24px; 
-            font-size: 1rem; 
+            padding: 10px 22px; 
+            font-size: 0.95rem; 
             cursor: pointer; 
             color: var(--text-muted); 
             font-weight: 600;
             border-radius: 40px; 
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
             font-family: 'Inter', sans-serif;
         }
         .tab-btn:hover { color: var(--text-main); }
         .tab-btn.active { 
             background: white; 
             color: var(--primary); 
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05); 
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06); 
         }
 
-        /* --- محتوای تب‌ها --- */
+        /* --- Content Areas --- */
         .tab-content { display: none; }
-        .tab-content.active { display: block; animation: fadeInUp 0.4s ease forwards; }
-        @keyframes fadeInUp { 
-            from { opacity: 0; transform: translateY(10px); } 
-            to { opacity: 1; transform: translateY(0); } 
+        .tab-content.active { display: block; animation: fadeScale 0.4s ease forwards; }
+        @keyframes fadeScale { 
+            from { opacity: 0; transform: scale(0.99) translateY(10px); } 
+            to { opacity: 1; transform: scale(1) translateY(0); } 
         }
 
         iframe { 
             width: 100%; 
             height: 750px; 
-            border: none; 
-            border-radius: 12px;
+            border: 1px solid var(--border-light); 
+            border-radius: 16px;
             background: #f8fafc;
         }
 
-        .grid-layout { display: grid; gap: 20px; grid-template-columns: 1fr; }
         .info-card { 
-            padding: 30px; 
+            padding: 35px; 
             background: white; 
-            border: 1px solid #e2e8f0; 
-            border-radius: 16px; 
+            border: 1px solid var(--border-light); 
+            border-radius: 20px; 
         }
         
+        /* --- Pipeline --- */
         .pipeline-layout {
             display: flex;
-            gap: 40px;
+            gap: 50px;
             align-items: flex-start;
             flex-wrap: wrap;
         }
-        .pipeline-text {
-            flex: 1;
-            min-width: 300px;
-        }
-        .pipeline-image {
-            flex: 1;
-            min-width: 300px;
-            display: flex;
-            justify-content: center;
-        }
+        .pipeline-text { flex: 1; min-width: 300px; }
+        .pipeline-image { flex: 1; min-width: 300px; display: flex; justify-content: center; }
         .pipeline-image img {
-            max-width: 500px;
-            width: 100%;
+            max-width: 100%;
             height: auto;
-            border-radius: 12px;
-            border: 1px solid #e2e8f0;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-radius: 16px;
+            border: 1px solid var(--border-light);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+            transition: transform 0.3s;
         }
+        .pipeline-image img:hover { transform: translateY(-5px); }
+        
         .download-box {
-            background: #f1f5f9;
-            padding: 20px;
-            border-radius: 12px;
-            margin-top: 20px;
-            border-left: 5px solid var(--primary);
+            background: linear-gradient(to right, #f8fafc, #f1f5f9);
+            padding: 25px;
+            border-radius: 16px;
+            margin-top: 25px;
+            border-left: 4px solid var(--primary);
         }
         .btn-download-ref {
-            display: inline-block;
-            background: #3399ff; 
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--primary); 
             color: white;
             text-decoration: none;
-            padding: 10px 20px;
-            border-radius: 8px;
+            padding: 10px 24px;
+            border-radius: 10px;
             font-weight: 500;
-            margin-top: 10px;
-            transition: 0.2s;
+            margin-top: 12px;
+            transition: all 0.2s;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
         }
-        .btn-download-ref:hover { background-color: #2563eb; transform: translateY(-2px); }
+        .btn-download-ref:hover { 
+            background-color: var(--primary-hover); 
+            transform: translateY(-2px); 
+            box-shadow: 0 6px 16px rgba(37, 99, 235, 0.3);
+            color: white;
+        }
 
-        .ref-section { margin-top: 40px; padding-top: 20px; border-top: 1px solid #e2e8f0; }
+        /* --- Publications (Upgraded to Cards) --- */
+        .ref-section { margin-top: 40px; padding-top: 25px; border-top: 1px solid var(--border-light); }
         .ref-list { list-style: none; padding: 0; margin: 0; font-size: 0.95rem; color: var(--text-muted); }
-        .ref-list li { margin-bottom: 12px; padding-left: 20px; text-indent: -20px; line-height: 1.5; }
+        .ref-list li { margin-bottom: 12px; padding-left: 20px; text-indent: -20px; }
 
         .pub-list { list-style: none; padding: 0; margin: 0; }
-        .pub-list li { margin-bottom: 25px; border-left: 4px solid var(--primary); padding-left: 20px; }
-        .pub-title { font-weight: 600; color: var(--text-main); font-size: 1.1rem; margin-bottom: 5px;}
-        .pub-authors { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 10px; }
-        .custom-link { color: var(--primary); text-decoration: none; font-weight: 600; font-size: 0.95rem; display: inline-flex; align-items: center; gap: 5px;}
-        .custom-link:hover { text-decoration: underline; }
+        .pub-list li { 
+            background: #f8fafc;
+            padding: 25px;
+            border-radius: 16px;
+            border: 1px solid transparent;
+            border-left: 4px solid var(--primary); 
+            margin-bottom: 20px; 
+            transition: all 0.2s ease;
+        }
+        .pub-list li:hover {
+            background: white;
+            border: 1px solid var(--border-light);
+            border-left: 4px solid var(--primary);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.04);
+            transform: translateY(-3px);
+        }
+        .pub-title { font-weight: 600; color: var(--text-main); font-size: 1.15rem; margin-bottom: 8px; line-height: 1.4;}
+        .pub-authors { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 12px; }
+        .custom-link { color: var(--primary); text-decoration: none; font-weight: 600; font-size: 0.95rem; display: inline-flex; align-items: center; gap: 6px;}
+        .custom-link:hover { text-decoration: underline; color: var(--primary-hover);}
 
-        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 20px;}
-        .contact-person, .contact-address { background: #f8fafc; padding: 25px; border-radius: 12px; }
-        .contact-person h4, .contact-address h4 { margin-top: 0; color: #0f172a; font-size: 1.2rem; margin-bottom: 15px;}
-        .contact-item { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; color: var(--text-muted); }
+        /* --- Contact --- */
+        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-top: 30px;}
+        .contact-person, .contact-address { 
+            background: #f8fafc; 
+            padding: 30px; 
+            border-radius: 16px; 
+            border: 1px solid transparent;
+            transition: all 0.2s;
+        }
+        .contact-person:hover, .contact-address:hover {
+            background: white;
+            border-color: var(--border-light);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.04);
+            transform: translateY(-2px);
+        }
+        .contact-person h4, .contact-address h4 { margin-top: 0; color: #0f172a; font-size: 1.2rem; margin-bottom: 20px;}
+        .contact-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 15px; color: var(--text-muted); }
+        .contact-icon { font-size: 1.2rem; }
 
-        /* --- استایل فوتر (Footer) --- */
+        /* --- Footer --- */
         .site-footer {
             background-color: #0f172a;
             color: #cbd5e1;
-            padding: 50px 20px 20px 20px;
+            padding: 60px 20px 20px 20px;
             margin-top: 60px;
             font-family: 'Inter', sans-serif;
             border-top: 4px solid var(--primary);
@@ -259,25 +307,17 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
-            gap: 30px;
+            gap: 40px;
         }
-        .footer-section {
-            flex: 1;
-            min-width: 250px;
-        }
-        .footer-logo {
-            max-width: 220px; 
-            height: auto;
-            margin-bottom: 20px;
-            display: block;
-        }
+        .footer-section { flex: 1; min-width: 250px; }
+        .footer-logo { max-width: 200px; height: auto; margin-bottom: 25px; display: block; opacity: 0.9;}
         .footer-section h4 {
             color: #ffffff;
             font-size: 1.1rem;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             font-weight: 600;
             position: relative;
-            padding-bottom: 8px;
+            padding-bottom: 10px;
         }
         .footer-section h4::after {
             content: '';
@@ -286,30 +326,19 @@
             bottom: 0;
             width: 40px;
             height: 3px;
-            background-color: #3b82f6; 
+            background-color: var(--primary); 
             border-radius: 2px;
         }
-        .footer-section p {
-            margin: 0 0 10px 0;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-        .footer-link {
-            color: #93c5fd;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        .footer-link:hover {
-            color: #ffffff;
-            text-decoration: underline;
-        }
+        .footer-section p { margin: 0 0 12px 0; font-size: 0.95rem; line-height: 1.6; }
+        .footer-link { color: #93c5fd; text-decoration: none; transition: color 0.2s ease; }
+        .footer-link:hover { color: #ffffff; text-decoration: underline; }
         .footer-bottom {
             text-align: center;
-            margin-top: 40px;
-            padding-top: 20px;
+            margin-top: 50px;
+            padding-top: 25px;
             border-top: 1px solid #1e293b;
             font-size: 0.85rem;
-            color: #94a3b8;
+            color: #64748b;
         }
     </style>
 </head>
@@ -317,12 +346,12 @@
 
     <header class="hero">
         <div class="logo-container">
-            <img src="https://github.com/MoeinGazestanii/UPARUS-Portal/blob/main/PIC.png?raw=true" alt="UPARUS Logo" class="hero-logo">
+            <img src="https://github.com/MoeinGazestanii/UPARUS-Portal/blob/main/PIC.png?raw=true" alt="IPARUS Logo" class="hero-logo">
         </div>
         
         <h1>IPARUS: Genomic Resources for the Parus genus</h1>
         
-        <p>This website hosts the <strong>IPARUS</strong> (<strong>I</strong>ntegrated <strong>P</strong>latform for <em>Parus</em> <strong>A</strong>lignments, <strong>R</strong>esources and <strong>U</strong>seful <strong>S</strong>equences) project and provides public access to genomic resources of birds from the <em>Parus</em> genus. <em>Parus</em> is a genus of old-world birds in the tit family. Its most known member is the great tit (<em>Parus major</em>), which is also the species represented by the most samples on this website. However, in the future datasets from other <em>Parus</em> species and their many subspecies may be added here.</p>
+        <p>This website hosts the <strong>IPARUS</strong> (<strong>I</strong>ntegrated <strong>P</strong>latform for <em>Parus</em> <strong>A</strong>lignments, <strong>R</strong>esources and <strong>U</strong>seful <strong>S</strong>equences) project and provides public access to genomic resources of birds from the <em>Parus</em> genus. <em>Parus</em> is a genus of old-world birds in the tit family. Its most known member is the great tit (<em>Parus major</em>), which is also the species represented by the most samples on this website.</p>
         
         <p>We provide a database of sequence data and the corresponding metadata of the samples to facilitate collaboration between researchers and provide access to this data to the public.</p>
     </header>
@@ -334,8 +363,8 @@
                 <div class="tabs">
                     <button class="tab-btn active" onclick="openTab('mapTab')" id="btnMap">🌍 Map View</button>
                     <button class="tab-btn" onclick="openTab('tableTab')" id="btnTable">🧬 Sequence Data</button>
-                    <button class="tab-btn" onclick="openTab('infoTab')" id="btnInfo">📊 Sample Information</button>
-                    <button class="tab-btn" onclick="openTab('pipelineTab')" id="btnPipeline">💻 Pipeline & Reference</button>
+                    <button class="tab-btn" onclick="openTab('infoTab')" id="btnInfo">📊 Sample Info</button>
+                    <button class="tab-btn" onclick="openTab('pipelineTab')" id="btnPipeline">💻 Pipeline</button>
                     <button class="tab-btn" onclick="openTab('pubTab')" id="btnPub">📚 Publications</button>
                     <button class="tab-btn" onclick="openTab('contactTab')" id="btnContact">✉️ Contact</button>
                 </div>
@@ -347,18 +376,21 @@
 
             <div id="pipelineTab" class="tab-content">
                 <div class="info-card">
-                    <h3 style="color: var(--text-main); margin-bottom: 25px;">Bioinformatic Pipeline & Reference Genome</h3>
+                    <h3 style="color: var(--text-main); margin-bottom: 30px; font-size: 1.4rem;">Bioinformatic Pipeline & Reference Genome</h3>
                     
                     <div class="pipeline-layout">
                         <div class="pipeline-text">
                             <p>The bioinformatic pipeline to map the reads to the reference was the same as described in Chen et al. (2025). Briefly, the quality of the Illumina sequencing reads was assessed using <strong>FastQC v0.12.1</strong> and trimmed using <strong>Trimmomatic v0.39</strong> (Bolger et al. 2014). Trimmed reads were then aligned to the <em>Parus major</em> reference genome (GCF_001522545.3) with the <strong>BWA-MEM2 v2.2.1</strong> algorithm (Li 2013) with default parameters. After converting SAM to BAM files and indexing with <strong>SAMtools v1.2</strong> (Li et al. 2009) duplicated reads were marked using MarkDuplicatesSpark implemented in <strong>GATK v4.5.0</strong> (Auwera and O’Connor 2020). This pipeline was developed and executed by Yu-Chi Chen during her PHD at the Gossmann lab. It is the same pipeline used in Chen et al. 2025.</p>
                             
                             <div class="download-box">
-                                <p style="margin-top:0;"><strong>📥 Download Reference Genome</strong></p>
-                                <p style="font-size: 0.9em; color: var(--text-muted); margin-bottom: 10px;">
+                                <p style="margin-top:0; color: var(--text-main); font-size: 1.1rem;"><strong>📥 Download Reference Genome</strong></p>
+                                <p style="font-size: 0.95em; color: var(--text-muted); margin-bottom: 15px;">
                                     You can download the <i>Parus major</i> reference genome from our database here:
                                 </p>
-                                <a href="GCF_001522545.3.zip" class="btn-download-ref">⬇️ Download GCF_001522545.3</a>
+                                <a href="GCF_001522545.3.zip" class="btn-download-ref">
+                                    <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                                    Download GCF_001522545.3
+                                </a>
                             </div>
                         </div>
 
@@ -368,7 +400,7 @@
                     </div>
 
                     <div class="ref-section">
-                        <h4 style="margin-bottom: 15px;">📜 References</h4>
+                        <h4 style="margin-bottom: 20px;">📜 References</h4>
                         <ul class="ref-list">
                             <li>Auwera, G. A. V. der, and B. D. O’Connor. 2020. <i>Genomics in the Cloud: Using Docker, GATK, and WDL in Terra.</i> 1st ed. O’Reilly Media, Inc.</li>
                             <li>Bolger, A. M., M. Lohse, and B. Usadel. 2014. Trimmomatic: a flexible trimmer for Illumina sequence data. <i>Bioinformatics</i> 30:2114–2120.</li>
@@ -389,101 +421,110 @@
             </div>
 
             <div id="pubTab" class="tab-content">
-                <div class="grid-layout">
-                    <div class="info-card">
-                        <p style="color: var(--text-main); font-size: 1.05rem; margin-bottom: 25px;">
-                            List of publications in which the samples on this website were analyzed:
-                        </p>
+                <div class="info-card" style="padding: 0; border: none; background: transparent;">
+                    <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 30px; text-align: center;">
+                        Publications in which the samples on this website were analyzed:
+                    </p>
+                    
+                    <ul class="pub-list">
+                        <li>
+                            <div class="pub-title">Opinion: Why Sex-Based Genomic Differentiation Should Not Be Overlooked in Population Genetics.</div>
+                            <div class="pub-authors">Chen, Y.-C., Vellnow, N., Wilcox, J.J.S., Javaheri Tehrani, S., Gossmann, T.I. (2025) | <i>Mol. Ecol. e70061</i></div>
+                            <a href="https://doi.org/10.1111/mec.70061" target="_blank" class="custom-link">
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/><path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/></svg>
+                                View Article (DOI)
+                            </a>
+                        </li>
                         
-                        <ul class="pub-list">
-                            <li>
-                                <div class="pub-title">Opinion: Why Sex-Based Genomic Differentiation Should Not Be Overlooked in Population Genetics.</div>
-                                <div class="pub-authors">Chen, Y.-C., Vellnow, N., Wilcox, J.J.S., Javaheri Tehrani, S., Gossmann, T.I. (2025) | <i>Mol. Ecol. e70061</i></div>
-                                <a href="https://doi.org/10.1111/mec.70061" target="_blank" class="custom-link">
-                                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/><path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/></svg>
-                                    View Article (DOI)
-                                </a>
-                            </li>
-                            
-                            <li>
-                                <div class="pub-title">Comparative Genomics Reveals Evolution of a Beak Morphology Locus in a High-Altitude Songbird.</div>
-                                <div class="pub-authors">Cheng, Y., Miller, M.J., Zhang, D., Song, G., Jia, C., Qu, Y., Lei, F. (2020) | <i>Mol. Biol. Evol. 37, 2983–2988</i></div>
-                                <a href="https://doi.org/10.1093/molbev/msaa157" target="_blank" class="custom-link">
-                                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/><path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/></svg>
-                                    View Article (DOI)
-                                </a>
-                            </li>
+                        <li>
+                            <div class="pub-title">Comparative Genomics Reveals Evolution of a Beak Morphology Locus in a High-Altitude Songbird.</div>
+                            <div class="pub-authors">Cheng, Y., Miller, M.J., Zhang, D., Song, G., Jia, C., Qu, Y., Lei, F. (2020) | <i>Mol. Biol. Evol. 37, 2983–2988</i></div>
+                            <a href="https://doi.org/10.1093/molbev/msaa157" target="_blank" class="custom-link">
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/><path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/></svg>
+                                View Article (DOI)
+                            </a>
+                        </li>
 
-                            <li>
-                                <div class="pub-title">Parallel genomic responses to historical climate change and high elevation in East Asian songbirds.</div>
-                                <div class="pub-authors">Cheng, Y., Miller, M.J., Zhang, D., Xiong, Y., Hao, Y., Jia, C., Cai, T., Li, S.-H., Johansson, U.S., Liu, Y., Chang, Y., Song, G., Qu, Y., Lei, F. (2021) | <i>Proc. Natl. Acad. Sci. 118, e2023918118</i></div>
-                                <a href="https://doi.org/10.1073/pnas.2023918118" target="_blank" class="custom-link">
-                                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/><path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/></svg>
-                                    View Article (DOI)
-                                </a>
-                            </li>
+                        <li>
+                            <div class="pub-title">Parallel genomic responses to historical climate change and high elevation in East Asian songbirds.</div>
+                            <div class="pub-authors">Cheng, Y., Miller, M.J., Zhang, D., Xiong, Y., Hao, Y., Jia, C., Cai, T., Li, S.-H., Johansson, U.S., Liu, Y., Chang, Y., Song, G., Qu, Y., Lei, F. (2021) | <i>Proc. Natl. Acad. Sci. 118, e2023918118</i></div>
+                            <a href="https://doi.org/10.1073/pnas.2023918118" target="_blank" class="custom-link">
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/><path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/></svg>
+                                View Article (DOI)
+                            </a>
+                        </li>
 
-                            <li>
-                                <div class="pub-title">Determinants of the Efficacy of Natural Selection on Coding and Noncoding Variability in Two Passerine Species.</div>
-                                <div class="pub-authors">Corcoran, P., Gossmann, T.I., Barton, H.J., The Great Tit HapMap Consortium, Slate, J., Zeng, K. (2017) | <i>Genome Biol. Evol. 9, 2987–3007</i></div>
-                                <a href="https://doi.org/10.1093/gbe/evx213" target="_blank" class="custom-link">
-                                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/><path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/></svg>
-                                    View Article (DOI)
-                                </a>
-                            </li>
+                        <li>
+                            <div class="pub-title">Determinants of the Efficacy of Natural Selection on Coding and Noncoding Variability in Two Passerine Species.</div>
+                            <div class="pub-authors">Corcoran, P., Gossmann, T.I., Barton, H.J., The Great Tit HapMap Consortium, Slate, J., Zeng, K. (2017) | <i>Genome Biol. Evol. 9, 2987–3007</i></div>
+                            <a href="https://doi.org/10.1093/gbe/evx213" target="_blank" class="custom-link">
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/><path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/></svg>
+                                View Article (DOI)
+                            </a>
+                        </li>
 
-                            <li>
-                                <div class="pub-title">Evolutionary signals of selection on cognition from the great tit genome and methylome.</div>
-                                <div class="pub-authors">Laine, V.N., Gossmann, T.I., Schachtschneider, K.M., Garroway, C.J., Madsen, O., Verhoeven, K.J.F., de Jager, V., Megens, H.-J., Warren, W.C., Minx, P., Crooijmans, R.P.M.A., Corcoran, P., Sheldon, B.C., Slate, J., Zeng, K., van Oers, K., Visser, M.E., Groenen, M.A.M. (2016) | <i>Nat. Commun. 7, 10474</i></div>
-                                <a href="https://doi.org/10.1038/ncomms10474" target="_blank" class="custom-link">
-                                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/><path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/></svg>
-                                    View Article (DOI)
-                                </a>
-                            </li>
+                        <li>
+                            <div class="pub-title">Evolutionary signals of selection on cognition from the great tit genome and methylome.</div>
+                            <div class="pub-authors">Laine, V.N., Gossmann, T.I., Schachtschneider, K.M., Garroway, C.J., Madsen, O., Verhoeven, K.J.F., de Jager, V., Megens, H.-J., Warren, W.C., Minx, P., Crooijmans, R.P.M.A., Corcoran, P., Sheldon, B.C., Slate, J., Zeng, K., van Oers, K., Visser, M.E., Groenen, M.A.M. (2016) | <i>Nat. Commun. 7, 10474</i></div>
+                            <a href="https://doi.org/10.1038/ncomms10474" target="_blank" class="custom-link">
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/><path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/></svg>
+                                View Article (DOI)
+                            </a>
+                        </li>
 
-                            <li>
-                                <div class="pub-title">Genetic responses to seasonal variation in altitudinal stress: whole-genome resequencing of great tit in eastern Himalayas.</div>
-                                <div class="pub-authors">Qu, Y., Tian, S., Han, N., Zhao, H., Gao, B., Fu, J., Cheng, Y., Song, G., Ericson, P.G.P., Zhang, Y.E., Wang, D., Quan, Q., Jiang, Z., Li, R., Lei, F. (2015) | <i>Sci. Rep. 5, 14256</i></div>
-                                <a href="https://doi.org/10.1038/srep14256" target="_blank" class="custom-link">
-                                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/><path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/></svg>
-                                    View Article (DOI)
-                                </a>
-                            </li>
+                        <li>
+                            <div class="pub-title">Genetic responses to seasonal variation in altitudinal stress: whole-genome resequencing of great tit in eastern Himalayas.</div>
+                            <div class="pub-authors">Qu, Y., Tian, S., Han, N., Zhao, H., Gao, B., Fu, J., Cheng, Y., Song, G., Ericson, P.G.P., Zhang, Y.E., Wang, D., Quan, Q., Jiang, Z., Li, R., Lei, F. (2015) | <i>Sci. Rep. 5, 14256</i></div>
+                            <a href="https://doi.org/10.1038/srep14256" target="_blank" class="custom-link">
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/><path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/></svg>
+                                View Article (DOI)
+                            </a>
+                        </li>
 
-                            <li>
-                                <div class="pub-title">Ground tit genome reveals avian adaptation to living at high altitudes in the Tibetan plateau.</div>
-                                <div class="pub-authors">Qu, Y., Zhao, H., Han, N., Zhou, G., Song, G., Gao, B., Tian, S., Zhang, J., Zhang, R., Meng, X., Zhang, Yuan, Zhang, Yong, Zhu, X., Wang, W., Lambert, D., Ericson, P.G.P., Subramanian, S., Yeung, C., Zhu, H., Jiang, Z., Li, R., Lei, F. (2013) | <i>Nat. Commun. 4, 2071</i></div>
-                                <a href="https://doi.org/10.1038/ncomms3071" target="_blank" class="custom-link">
-                                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/><path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/></svg>
-                                    View Article (DOI)
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+                        <li>
+                            <div class="pub-title">Ground tit genome reveals avian adaptation to living at high altitudes in the Tibetan plateau.</div>
+                            <div class="pub-authors">Qu, Y., Zhao, H., Han, N., Zhou, G., Song, G., Gao, B., Tian, S., Zhang, J., Zhang, R., Meng, X., Zhang, Yuan, Zhang, Yong, Zhu, X., Wang, W., Lambert, D., Ericson, P.G.P., Subramanian, S., Yeung, C., Zhu, H., Jiang, Z., Li, R., Lei, F. (2013) | <i>Nat. Commun. 4, 2071</i></div>
+                            <a href="https://doi.org/10.1038/ncomms3071" target="_blank" class="custom-link">
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/><path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/></svg>
+                                View Article (DOI)
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
 
             <div id="contactTab" class="tab-content">
                 <div class="info-card">
-                    <p style="color: var(--text-main); font-size: 1.05rem; margin-bottom: 25px;">
-                        The <strong>IPARUS</strong> database and this website are maintained by the <a href="https://csb.bci.tu-dortmund.de/" target="_blank" style="color: #10b981; font-weight: 600; text-decoration: underline;">Gossmann lab</a> at TU Dortmund University.
-                        The scientific contact person and project coordinator is Nikolas Vellnow. <br><br>
+                    <p style="color: var(--text-main); font-size: 1.1rem; margin-bottom: 30px; text-align: center; max-width: 800px; margin-left: auto; margin-right: auto;">
+                        The <strong>IPARUS</strong> database and this website are maintained by the <a href="https://csb.bci.tu-dortmund.de/" target="_blank" style="color: #10b981; font-weight: 600; text-decoration: none; border-bottom: 2px solid #10b981;">Gossmann lab</a> at TU Dortmund University. The scientific contact person and project coordinator is Nikolas Vellnow. <br><br>
                         The web portal and technical implementation are developed by student assistant Mohammadmoein Hajihoseinigazestani (Moein Gazestani).
                     </p>   
+                    
                     <div class="contact-grid">
                         <div class="contact-person">
                             <h4>👨‍🔬 Primary Contact</h4>
-                            <div class="contact-item"><strong>Dr. Nikolas Vellnow</strong></div>
-                            <div class="contact-item">✉️ <a href="mailto:nikolas.vellnow@tu-dortmund.de" class="custom-link">nikolas.vellnow@tu-dortmund.de</a></div>
-                            <div class="contact-item">📞 <a href="tel:+492317556863" class="custom-link">+49 231 755 6863</a></div>
+                            <div class="contact-item">
+                                <span class="contact-icon">👤</span> 
+                                <div><strong>Dr. Nikolas Vellnow</strong></div>
+                            </div>
+                            <div class="contact-item">
+                                <span class="contact-icon">✉️</span> 
+                                <div><a href="mailto:nikolas.vellnow@tu-dortmund.de" class="custom-link">nikolas.vellnow@tu-dortmund.de</a></div>
+                            </div>
+                            <div class="contact-item">
+                                <span class="contact-icon">📞</span> 
+                                <div><a href="tel:+492317556863" class="custom-link">+49 231 755 6863</a></div>
+                            </div>
                         </div>
                         
                         <div class="contact-address">
                             <h4>🏛️ Institution Address</h4>
-                            <div class="contact-item">Laboratory of Computational Systems Biology</div>
-                            <div class="contact-item">Faculty of Biochemical and Chemical Engineering</div>
-                            <div class="contact-item">Technical University Dortmund</div>
-                            <div class="contact-item">📍 Emil-Figge-Str. 66, 44227 Dortmund, Germany</div>
+                            <div class="contact-item" style="display: block;">
+                                <strong>Laboratory of Computational Systems Biology</strong><br>
+                                Faculty of Biochemical and Chemical Engineering<br>
+                                Technical University Dortmund<br>
+                                <span style="display: inline-block; margin-top: 10px; color: var(--text-main);">📍 Emil-Figge-Str. 66, 44227 Dortmund, Germany</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -520,6 +561,7 @@
             &copy; 2026 IPARUS Database. Technical implementation by Moein Gazestani. All rights reserved.
         </div>
     </footer>
+
     <script>
         function openTab(tabId) {
             document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
@@ -533,6 +575,12 @@
             if(tabId === 'infoTab') document.getElementById('btnInfo').classList.add('active');
             if(tabId === 'pubTab') document.getElementById('btnPub').classList.add('active');
             if(tabId === 'contactTab') document.getElementById('btnContact').classList.add('active');
+            
+            // اسکرول نرم به ابتدای باکس بعد از کلیک روی تب (در موبایل بسیار کاربردی است)
+            window.scrollTo({
+                top: document.querySelector('.dashboard-card').offsetTop - 30,
+                behavior: 'smooth'
+            });
         }
 
         window.switchToTable = function(urlHash) {
