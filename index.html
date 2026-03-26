@@ -24,7 +24,7 @@
             line-height: 1.6;
         }
 
-        /* --- بخش هدر بالا (Hero Section) --- */
+        
         .hero {
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             color: white;
@@ -34,36 +34,36 @@
             overflow: hidden; 
         }
         
-        /* --- استایل لوگو (کادر سفید یک‌چهارم دایره اصلی) --- */
+        
         .logo-container {
             position: absolute;
             top: 0;
             left: 0;
-            width: 310px;  /* سایز کادر سفید */
+            width: 310px;  
             height: 310px;  
-             /* انحنای یک‌چهارم دایره */
+             
             
             z-index: 10;
         }
 
-        /* --- استایل خود لوگوی جدید (مرکز کادر سفید) --- */
+        
         .hero-logo {
             position: absolute;
-            top: 45%;  /* مرکز چین کردن عمودی */
-            left: 35%; /* مرکز چین کردن افقی */
+            top: 45%;  
+            left: 35%; 
             transform: translate(-50%, -50%); 
-            width: 380px; /* سایز لوگو داخل کادر */
+            width: 380px; 
             height: auto;
             filter: drop-shadow(2px 5px 8px rgba(0,0,0,0.2)); 
             transition: transform 0.3s ease;
         }
 
-        /* افکت هاور */
+        
         .logo-container:hover .hero-logo {
             transform: translate(-50%, -50%) scale(1.08) rotate(3deg); 
         }
 
-        /* تنظیمات موبایل (دایره ساده وسط) */
+        
         @media (max-width: 768px) {
             .logo-container {
                 position: relative;
@@ -74,13 +74,13 @@
                 top: auto;
                 left: auto;
                 box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-                background-color: white; /* در موبایل هم سفید باشد تا لوگو دیده شود */
+                background-color: white; 
             }
             
             .hero-logo {
                 top: 50%;
                 left: 50%;
-                transform: translate(-50%, -50%); /* مرکز چین کردن */
+                transform: translate(-50%, -50%); 
                 width: 130px;
                 filter: drop-shadow(2px 5px 5px rgba(0,0,0,0.2));
             }
@@ -107,7 +107,7 @@
             z-index: 5;
         }
 
-        /* --- محفظه اصلی سایت --- */
+        
         .container { 
             max-width: 1300px; 
             margin: -30px auto 40px auto; 
@@ -123,7 +123,7 @@
             padding: 30px;
         }
 
-        /* --- استایل تب‌های چسبان (Sticky Tabs) --- */
+        
         .tabs-container {
             display: flex;
             justify-content: center;
@@ -168,7 +168,7 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.05); 
         }
 
-        /* --- محتوای تب‌ها --- */
+        
         .tab-content { display: none; }
         .tab-content.active { display: block; animation: fadeInUp 0.4s ease forwards; }
         @keyframes fadeInUp { 
@@ -184,7 +184,7 @@
             background: #f8fafc;
         }
 
-        /* --- استایل کارت‌های اطلاعات --- */
+        
         .grid-layout { display: grid; gap: 20px; grid-template-columns: 1fr; }
         .info-card { 
             padding: 30px; 
@@ -193,7 +193,7 @@
             border-radius: 16px; 
         }
         
-        /* --- استایل تب جدید: Pipeline --- */
+        
         .pipeline-layout {
             display: flex;
             gap: 40px;
@@ -227,7 +227,7 @@
         }
         .btn-download-ref {
             display: inline-block;
-            background: #3399ff; /* آبی روشن */
+            background: #3399ff; 
             color: white;
             text-decoration: none;
             padding: 10px 20px;
@@ -238,12 +238,12 @@
         }
         .btn-download-ref:hover { background-color: #2563eb; transform: translateY(-2px); }
 
-        /* رفرنس‌ها */
+        
         .ref-section { margin-top: 40px; padding-top: 20px; border-top: 1px solid #e2e8f0; }
         .ref-list { list-style: none; padding: 0; margin: 0; font-size: 0.95rem; color: var(--text-muted); }
         .ref-list li { margin-bottom: 12px; padding-left: 20px; text-indent: -20px; line-height: 1.5; }
 
-        /* مقالات */
+        
         .pub-list { list-style: none; padding: 0; margin: 0; }
         .pub-list li { margin-bottom: 25px; border-left: 4px solid var(--primary); padding-left: 20px; }
         .pub-title { font-weight: 600; color: var(--text-main); font-size: 1.1rem; margin-bottom: 5px;}
@@ -251,7 +251,7 @@
         .custom-link { color: var(--primary); text-decoration: none; font-weight: 600; font-size: 0.95rem; display: inline-flex; align-items: center; gap: 5px;}
         .custom-link:hover { text-decoration: underline; }
 
-        /* تماس با ما */
+        
         .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 20px;}
         .contact-person, .contact-address { background: #f8fafc; padding: 25px; border-radius: 12px; }
         .contact-person h4, .contact-address h4 { margin-top: 0; color: #0f172a; font-size: 1.2rem; margin-bottom: 15px;}
