@@ -17,7 +17,7 @@
             --border-light: #e2e8f0;
         }
 
-        /* --- Custom Scrollbar --- */
+        
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #f1f5f9; }
         ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
@@ -32,11 +32,11 @@
             background-color: var(--bg-body); 
             color: var(--text-main); 
             line-height: 1.7;
-            -webkit-font-smoothing: antialiased; /* شارپ شدن متن‌ها */
+            -webkit-font-smoothing: antialiased; 
             -moz-osx-font-smoothing: grayscale;
         }
 
-        /* --- Hero Section --- */
+        
         .hero {
             background: radial-gradient(circle at 50% 0%, #1e293b 0%, #0f172a 100%);
             color: white;
@@ -130,7 +130,7 @@
             padding: 35px;
         }
 
-        /* --- Tabs --- */
+        
         .tabs-container {
             display: flex;
             justify-content: center;
@@ -176,7 +176,7 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.06); 
         }
 
-        /* --- Content Areas --- */
+        
         .tab-content { display: none; }
         .tab-content.active { display: block; animation: fadeScale 0.4s ease forwards; }
         @keyframes fadeScale { 
@@ -199,7 +199,7 @@
             border-radius: 20px; 
         }
         
-        /* --- Pipeline --- */
+       
         .pipeline-layout {
             display: flex;
             gap: 50px;
@@ -246,7 +246,7 @@
             color: white;
         }
 
-        /* --- Publications (Upgraded to Cards) --- */
+        
         .ref-section { margin-top: 40px; padding-top: 25px; border-top: 1px solid var(--border-light); }
         .ref-list { list-style: none; padding: 0; margin: 0; font-size: 0.95rem; color: var(--text-muted); }
         .ref-list li { margin-bottom: 12px; padding-left: 20px; text-indent: -20px; }
@@ -273,7 +273,7 @@
         .custom-link { color: var(--primary); text-decoration: none; font-weight: 600; font-size: 0.95rem; display: inline-flex; align-items: center; gap: 6px;}
         .custom-link:hover { text-decoration: underline; color: var(--primary-hover);}
 
-        /* --- Contact --- */
+        
         .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-top: 30px;}
         .contact-person, .contact-address { 
             background: #f8fafc; 
@@ -292,7 +292,7 @@
         .contact-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 15px; color: var(--text-muted); }
         .contact-icon { font-size: 1.2rem; }
 
-        /* --- Footer --- */
+        
         .site-footer {
             background-color: #0f172a;
             color: #cbd5e1;
@@ -576,7 +576,7 @@
             if(tabId === 'pubTab') document.getElementById('btnPub').classList.add('active');
             if(tabId === 'contactTab') document.getElementById('btnContact').classList.add('active');
             
-            // اسکرول نرم به ابتدای باکس بعد از کلیک روی تب (در موبایل بسیار کاربردی است)
+            
             window.scrollTo({
                 top: document.querySelector('.dashboard-card').offsetTop - 30,
                 behavior: 'smooth'
